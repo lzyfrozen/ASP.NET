@@ -34,7 +34,7 @@ namespace CoreDemo.Controllers
         // GET api/<controller>/5
         //[HttpGet("{id}")]
         [HttpGet]
-        public string Get(int id)
+        public string Get()
         {
             return "value";
         }
