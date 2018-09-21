@@ -17,7 +17,7 @@ namespace CoreDemo.App_Code
 
         public TokenAuth(RequestDelegate next)
         {
-            next = _next;
+            _next = next;
         }
 
         public Task Invoke(HttpContext httpContext)

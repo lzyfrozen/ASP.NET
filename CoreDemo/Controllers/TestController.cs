@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CoreDemo.App_Code;
 using CoreDemo.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,12 +11,12 @@ using Newtonsoft.Json;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace CoreDemo.Controllers
-{    
+{
     /// <summary>
     /// 测试Test
     /// </summary>
     [Route("api/[controller]/[action]")]
-    [Authorize(policy:"Admin")]
+    [Authorize(policy: "Client")]
     public class TestController : Controller
     {
         private readonly MyDbContext _context;
@@ -36,7 +37,7 @@ namespace CoreDemo.Controllers
         [HttpGet]
         public string Get()
         {
-            return "value";
+            return "1234567890";
         }
 
         /// <summary>
@@ -51,6 +52,20 @@ namespace CoreDemo.Controllers
             model.Employees = empService.GetAll();
             return Json(JsonConvert.SerializeObject(model));
             //return RedirectToAction("List");
+        }
+
+        /// <summary>
+        /// GetToken
+        /// </summary>
+        /// <param name="tokenModel"></param>
+        /// <param name="expiresSliding"></param>
+        /// <param name="expiresAbsoulte"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [AllowAnonymous]
+        public string GetToken(TokenModel tokenModel, TimeSpan expiresSliding, TimeSpan expiresAbsoulte)
+        {
+            return Token.IssueJWT(tokenModel, expiresSliding, expiresAbsoulte);
         }
 
         //// POST api/<controller>
