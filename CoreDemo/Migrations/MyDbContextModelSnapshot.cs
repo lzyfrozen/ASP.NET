@@ -25,6 +25,8 @@ namespace CoreDemo.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
+                    b.Property<DateTime>("CreateTime");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50);

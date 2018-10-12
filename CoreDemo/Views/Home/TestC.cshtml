@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "TestC";
+}
+
+<h2>TestC</h2>
+
+@*<form action="/Home/TestC" method="post">
+    <input text="text" name="BinCode" /><br />
+    <input text="text" name="La2" /><br />
+    <input text="text" name="PickSequence" /><br />
+    <textarea name="OrdBatchNo"></textarea><br />
+    <input type="submit" /><button>submit</button>
+</form>*@
+<hr />
+
+    <input text="text" id="BinCode" name="BinCode" /><br />
+    <input text="text" id="La2" name="La2" /><br />
+    <input text="text" id="PickSequence" name="PickSequence" /><br />
+    <textarea id="OrdBatchNo" name="OrdBatchNo"></textarea><br />
+    <button id="btnSub">submit</button>
+<script src="~/Script/jquery-1.10.2.min.js"></script>
+<script>
+    $(function () {
+        $("#btnSub").click(function () {
+            var data = {
+                BinCode: $.trim($("input[name='BinCode']").val()),
+                La2: $.trim($("input[name='La2']").val()),
+                PickSequence: $.trim($("input[name='PickSequence']").val()),
+                OrdBatchNo: encodeURIComponent($.trim($("#OrdBatchNo").val()))
+            }; 
+            $.post("/Home/TestC", data, function (res) {
+                console.log(res);
+            }, "json");
+        })
+
+
+    })
+
+</script>

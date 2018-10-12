@@ -23,4 +23,20 @@ namespace CoreDemo.Models
             optionsBuilder.UseSqlite("Data Source=mydemo.db");
         }
     }
+
+    //public class MySqlServerDbContext : DbContext
+    //{
+    //    public MySqlServerDbContext() { }
+
+    //    //public MySqlServerDbContext(DbContextOptions<MyDbContext> options)
+    //    //    : base(options)
+    //    //{ }
+
+    //    public DbSet<Employee> Employees { get; set; }
+
+    //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //    {
+    //        optionsBuilder.UseSqlServer("");
+    //    }
+    //}
 }
